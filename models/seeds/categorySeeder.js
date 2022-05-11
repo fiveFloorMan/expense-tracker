@@ -1,16 +1,9 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://alpha:camp@harvie.klobq.mongodb.net/expense-tracker?retryWrites=true&w=majority')
-
 const Category = require('../category')
 
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log(`mongoose connect error in categorySeeder.js`)
-})
+const db = require('../../config/mongoose')
 
 db.once('open', () => {
-  console.log(`mongoose is connecting from expense-tracker/models/seeds/categorySeeder.js`)
-    Category.create({ name: 'testCategory' })
-  console.log(`Create category is done!`)
+  Category.create({ name: 'testCategory' })
+    .then(() => console.log('categorySeeder.js is done'))
+    .then(() => process.exit())
 })

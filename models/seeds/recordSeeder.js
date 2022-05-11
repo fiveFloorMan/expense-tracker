@@ -1,19 +1,13 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://alpha:camp@harvie.klobq.mongodb.net/expense-tracker?retryWrites=true&w=majority')
+const db = require('../../config/mongoose')
+
 const Record = require('../record')
 
-const db = mongoose.connection
-
-db.on('error', () => {
-  console.log(`mongoose connect error in recordSeeder.js`)
-})
-
 db.once('open', () => {
-  console.log(`mongoose is connecting from expense-tracker/models/seeds/recordSeeder.js`)
-    Record.create({
-      name: 'testRecord',
-      date: Date.now(),
-      amount: 100,
-    })
-  console.log(`Create records is done!`)
+  Record.create({
+    name: 'testRecord',
+    date: Date.now(),
+    amount: 100,
+  })
+    .then(() => console.log('recordSeeder.js is done'))
+    .then(() => process.exit())
 })
