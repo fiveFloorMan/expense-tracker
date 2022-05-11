@@ -9,9 +9,9 @@ db.on('error', () => {
 })
 
 db.once('open', () => {
-  console.log(`mongoose is connecting from expense-tracker`)
+  console.log(`mongoose is connecting from expense-tracker/models/seeds/recordSeeder.js`)
     Record.create({
-      name: 'test',
+      name: 'testRecord',
       date: Date.now(),
       amount: 100,
     })
