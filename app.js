@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const routes = require('./routes')
 
 const app = express()
 const PORT = 3000
@@ -9,9 +10,7 @@ app.set('view engine', 'handlebars')
 
 require('./config/mongoose')
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.use(routes)
 
 app.listen(PORT, () => {
   console.log(`Running in localhost:${PORT}`)
