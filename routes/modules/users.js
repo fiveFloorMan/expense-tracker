@@ -1,6 +1,8 @@
-// URL = localhost:PORT/user
+// URL = localhost:PORT/users
 const express = require('express')
 const router = express.Router()
+
+const User = require('../../models/user')
 
 // login 介面
 router.get('/login', (req, res) => {
@@ -20,8 +22,12 @@ router.get('/register', (req, res) => {
 // register 介面回傳data
 router.post('/register', (req, res) => {
   const {name, password, confirmPassword} = req.body
-  
-  console.log(`name: ${name} ; password: ${password}; confirmPassword: ${confirmPassword}`)
-  res.redirect('/')
+  if (password !== confirmPassword){
+    return res.render('register', { name, password })
+  }
+  User.create({ name, password })
+    .then()
+    .catch(error => console.log(error))
+  res.redirect('/users/login')
 })
 module.exports = router

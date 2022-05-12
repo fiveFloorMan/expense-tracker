@@ -4,11 +4,11 @@
     <form action="/users/register" method="POST" class="row justify-content-center">
       <div class="col-8 mt-2">
         <label for="registerName" class="form-label">Name</label>
-        <input id="registerName" name="name" class="form-control mx-auto w-100" placeholder="Text name here" type="text">
+        <input id="registerName" name="name" class="form-control mx-auto w-100" placeholder="Text name here" type="text" value="{{name}}">
       </div>
       <div class="col-8 mt-2">
         <label for="registerPassword" class="form-label">Password</label>
-        <input id="registerPassword" name="password" class="form-control mx-auto w-100" placeholder="Text password here" type="password">
+        <input id="registerPassword" name="password" class="form-control mx-auto w-100" placeholder="Text password here" type="password" value="{{password}}">
       </div>
       <div class="col-8 mt-2">
         <label for="confirmRegisterPassword" class="form-label">Confirm Password</label>
