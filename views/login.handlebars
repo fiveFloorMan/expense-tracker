@@ -1,1 +1,18 @@
-<h2>I'm login.handlebars</h2>
+<div class="container-sm">
+  <div class="card mt-4 w-50 mx-auto">
+    <h2 class="mx-auto mt-2">Login</h2>
+    <form action="/user/login" method="POST" class="row justify-content-center">
+      <div class="col-8 mt-2">
+        <label for="loginName" class="form-label">Name</label>
+        <input id="loginName" name="name" class="form-control mx-auto w-100" placeholder="Please text your name here" type="text">
+      </div>
+      <div class="col-8 mt-2">
+        <label for="loginPassword" class="form-label">password</label>
+        <input id="loginPassword" name="password" class="form-control mx-auto w-100" placeholder="Please text your password here" type="text">
+      </div>
+      <div class="col-8 mt-2 mb-4">
+        <button class="btn btn-success w-100">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
