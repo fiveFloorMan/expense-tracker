@@ -8,6 +8,8 @@ router.get('/login', (req, res) => {
 })
 // login 介面回傳data
 router.post('/login', (req, res) => {
+  const { name, password } = req.body
+  console.log(`name: ${name}; password: ${password}` )
   res.redirect('/')
 })
 
@@ -17,8 +19,9 @@ router.get('/register', (req, res) => {
 })
 // register 介面回傳data
 router.post('/register', (req, res) => {
-  const {name, password} = req.body
-  console.log(`name: ${name} ; password: ${password}`)
+  const {name, password, confirmPassword} = req.body
+  
+  console.log(`name: ${name} ; password: ${password}; confirmPassword: ${confirmPassword}`)
   res.redirect('/')
 })
 module.exports = router
