@@ -13,11 +13,9 @@ router.post('/login', (req, res) => {
   const { name, password } = req.body
   User.findOne({ name, password })
     .lean()
-    .then(user => {
-      console.log(`welcome back ${name} !`)
-    })
+    .then()
     .catch(error => console.log(error))
-  res.render('index', {name})
+  res.render('index', { name })
 })
 
 // register 介面
