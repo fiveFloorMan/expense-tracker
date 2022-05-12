@@ -1,17 +1,24 @@
 <div class="container-sm">
   <div class="card mt-4 w-50 mx-auto">
-    <h2 class="mx-auto mt-2">Login</h2>
+    <h2 class="mx-auto mt-4">Login</h2>
     <form action="/user/login" method="POST" class="row justify-content-center">
       <div class="col-8 mt-2">
         <label for="loginName" class="form-label">Name</label>
-        <input id="loginName" name="name" class="form-control mx-auto w-100" placeholder="Please text your name here" type="text">
+        <input id="loginName" name="name" class="form-control mx-auto w-100" placeholder="Text name here" type="text">
       </div>
       <div class="col-8 mt-2">
         <label for="loginPassword" class="form-label">password</label>
-        <input id="loginPassword" name="password" class="form-control mx-auto w-100" placeholder="Please text your password here" type="text">
+        <input id="loginPassword" name="password" class="form-control mx-auto w-100" placeholder="Text password here" type="text">
       </div>
-      <div class="col-8 mt-2 mb-4">
+      
+      <div class="col-8 mt-4 mb-4">
         <button class="btn btn-success w-100">Login</button>
+      </div>
+      <div class="col-10" 
+      style="border: 0; height: 1px; background: #ADADAD;">
+      </div>
+      <div class="col-8 mt-3 mb-3">
+        <a class="btn btn-secondary w-100" href="/user/regiter">Register an Account !</a>
       </div>
     </form>
   </div>

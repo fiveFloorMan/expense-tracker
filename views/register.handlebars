@@ -1,1 +1,28 @@
-<h2>I'm register.handlebars</h2>
+<div class="container-sm">
+  <div class="card mt-4 w-50 mx-auto">
+    <h2 class="mx-auto mt-4">Register</h2>
+    <form action="/user/register" method="POST" class="row justify-content-center">
+      <div class="col-8 mt-2">
+        <label for="registerName" class="form-label">Name</label>
+        <input id="registerName" name="name" class="form-control mx-auto w-100" placeholder="Text name here" type="text">
+      </div>
+      <div class="col-8 mt-2">
+        <label for="registerPassword" class="form-label">Password</label>
+        <input id="registerPassword" name="password" class="form-control mx-auto w-100" placeholder="Text password here" type="text">
+      </div>
+      <div class="col-8 mt-2">
+        <label for="confirmRegisterPassword" class="form-label">Confirm Password</label>
+        <input id="confirmRegisterPassword" name="confirmPassword" class="form-control mx-auto w-100" placeholder="Text confirm password here" type="text">
+      </div>
+      <div class="col-8 mt-4 mb-4">
+        <button class="btn btn-success w-100">Register</button>
+      </div>
+      <div class="col-10" 
+      style="border: 0; height: 1px; background: #ADADAD;">
+      </div>
+      <div class="col-8 mt-3 mb-3">
+        <a class="btn btn-secondary w-100" href="/user/login">Login my Account !</a>
+      </div>
+    </form>
+  </div>
+</div>
