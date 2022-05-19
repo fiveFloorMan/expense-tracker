@@ -1,0 +1,32 @@
+[
+ {
+  "name": "record1",
+  "date": null,
+  "amount": 100,
+  "categoryName":"家居物業"
+ },
+ {
+  "name": "record2",
+  "date": null,
+  "amount": 200,
+  "categoryName":"交通出行"
+ },
+ {
+  "name": "record3",
+  "date": null,
+  "amount": 300,
+  "categoryName":"休閒娛樂"
+ },
+ {
+  "name": "record4",
+  "date": null,
+  "amount": 400,
+  "categoryName":"餐飲食品"
+ },
+ {
+  "name": "record5",
+  "date": null,
+  "amount": 500,
+  "categoryName":"其他"
+ }
+]

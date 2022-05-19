@@ -6,7 +6,6 @@ const categoryList = require('./categoryList.json')
 db.once('open', () => {
 
   return Promise.all(Array.from({ length: 5 }, (_, index) => {
-      console.log(`A`)
       return Category.create({ 
         name: categoryList[index].name,
         icon: categoryList[index].icon
@@ -16,3 +15,4 @@ db.once('open', () => {
     .then(() => console.log('categorySeeder.js is done'))
     .then(() => process.exit())
 })
+
