@@ -9,10 +9,17 @@
 <body>
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand">家庭記帳本</a>
-    <form class="d-flex">
-      <button class="btn btn-outline-success" type="submit">login</button>
-    </form>
+    <a class="navbar-brand">{{#if isAuthenticated}}{{user.name}}'s{{/if}}家庭記帳本</a>
+    {{#if isAuthenticated}}
+        <form action="users/logout">
+          <button class="btn btn-outline-success d-flex" type="submit">logout</button>
+        </form>
+      {{else}}
+        <form action="users/login">
+          <button class="btn btn-outline-success d-flex" type="submit">login</button>
+        </form>
+    {{/if}}
+
   </div>
 </nav>
   {{{ body }}}
