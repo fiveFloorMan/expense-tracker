@@ -7,6 +7,9 @@ const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
 
+const usePassport = require('./config/passport')
+require('./config/mongoose')
+
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
 
@@ -16,8 +19,9 @@ app.use(session({
   saveUninitialized: true
 }))
 
-require('./config/mongoose')
 app.use(bodyParser.urlencoded({ extended: true }))
+
+usePassport(app)
 
 app.use(routes)
 

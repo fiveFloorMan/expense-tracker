@@ -1,6 +1,7 @@
 // URL = localhost:PORT/users
 const express = require('express')
 const router = express.Router()
+const passport = require('passport')
 
 const User = require('../../models/user')
 
@@ -9,14 +10,10 @@ router.get('/login', (req, res) => {
   res.render('login')
 })
 // login 介面回傳data
-router.post('/login', (req, res) => {
-  const { name, password } = req.body
-  User.findOne({ name, password })
-    .lean()
-    .then()
-    .catch(error => console.log(error))
-  res.render('index', { name })
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 // register 介面
 router.get('/register', (req, res) => {
