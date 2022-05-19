@@ -10,7 +10,6 @@ module.exports = app => {
     User.findOne({ name })
       .then(user => {
         if (!user) {
-          console.log('user不存在')
           return done(null, false, {message: 'user不存在'})
         }
         if (user.password !== password) {
