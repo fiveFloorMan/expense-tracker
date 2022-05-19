@@ -1,14 +1,16 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
+
 module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  passport.use(new LocalStrategy((username, password, done) => {
-    User.findOne({ name : username })
+  passport.use(new LocalStrategy({ usernameField: 'name'}, (name, password, done) => {
+    User.findOne({ name })
       .then(user => {
         if (!user) {
+          console.log('user不存在')
           return done(null, false, {message: 'user不存在'})
         }
         if (user.password !== password) {
