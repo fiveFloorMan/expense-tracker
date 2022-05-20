@@ -18,10 +18,22 @@
     </div>
     {{!-- Total Amount --}}
     <div class="col-8 mt-4">
-      Total Amount: 1000 元
+      Total Amount: {{totalAmount}} 元
     </div>
     <div class="col-8 mt-4">
-
+      <ul class="list-group">
+        {{!-- Records --}}
+        {{#each records}}
+          <li class="list-group-item">{{this.name}}
+            <div class="row">
+              <div class="col-4">
+                <i class="{{this.categoryId.icon}}"></i>
+                </p>{{this.categoryId.name}}</p>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
     </div>
   </div>
 </div>
