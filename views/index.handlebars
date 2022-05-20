@@ -47,7 +47,7 @@
                 <span>{{this.amount}}</span>
               </div>
               {{!-- Edit --}}
-              <form action="records/{{this._id}}/edit?_method=PUT" method="POST" class="d-flex col-1 align-items-center">
+              <form action="records/{{this._id}}/edit" method="GET" class="d-flex col-1 align-items-center">
                 <button type="submit" class="btn btn-success">Edit</button>
               </form>
               {{!-- Delete --}}
