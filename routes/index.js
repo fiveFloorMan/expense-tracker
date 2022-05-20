@@ -8,4 +8,5 @@ const users = require('./modules/users')
 router.use('/users', users)
 router.use('/', authenticator, home) // Record
 
+
 module.exports = router

@@ -20,16 +20,40 @@
     <div class="col-8 mt-4">
       Total Amount: {{totalAmount}} 元
     </div>
-    <div class="col-8 mt-4">
+    <div class="col-8 mt-4 mb-3">
       <ul class="list-group">
         {{!-- Records --}}
         {{#each records}}
-          <li class="list-group-item">{{this.name}}
+          <li class="list-group-item">
             <div class="row">
-              <div class="col-4">
-                <i class="{{this.categoryId.icon}}"></i>
-                </p>{{this.categoryId.name}}</p>
+              {{!-- icon --}}
+              <div class="d-flex col-1 align-items-center">
+                <i class="{{this.categoryId.icon}}" style="width: 4px;"></i>
               </div>
+              {{!-- categoryName --}}
+              <div class="d-flex col-2 align-items-center">
+                <span>{{this.categoryId.name}}</span>
+              </div>
+              {{!-- recordName --}}
+              <div class="d-flex col-2 align-items-center">
+                <span>{{this.name}}</span>
+              </div>
+              {{!-- createDay --}}
+              <div class="d-flex col-3 align-items-center">
+                <span>{{this.date}}</span>
+              </div>
+              {{!-- recordAmount --}}
+              <div class="d-flex col-1 align-items-center">
+                <span>{{this.amount}}</span>
+              </div>
+              {{!-- Edit --}}
+              <form action="records/{{this._id}}/edit?_method=PUT" method="POST" class="d-flex col-1 align-items-center">
+                <button type="submit" class="btn btn-success">Edit</button>
+              </form>
+              {{!-- Delete --}}
+              <form action="records/{{this._id}}/delete?_method=DELETE" method="POST" class="d-flex col-2 align-items-center">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </div>
           </li>
         {{/each}}

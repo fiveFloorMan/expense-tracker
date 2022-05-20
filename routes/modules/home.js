@@ -15,6 +15,15 @@ router.get('/', (req, res) => {
       let totalAmount = 0
       Promise.all(Array.from(records, record => {
         totalAmount += record.amount 
+        let createYear = record.date.getYear() + 1900
+        createYear = createYear.toString()
+        let createMonth = record.date.getMonth() + 1
+        createMonth = createMonth.toString()
+        let createDate = record.date.getDate().toString()
+        // console.log('createMonth:',createMonth)
+        // console.log('createDate:',createDate)
+
+        record.date = createYear + "-" + createMonth + "-" + createDate
       }))
       return res.render('index', { records, totalAmount }) 
     })
