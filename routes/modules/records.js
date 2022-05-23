@@ -12,7 +12,8 @@ router.get('/:recordId/edit', (req, res) => {
     .populate('categoryId', Category)
     .lean()
     .then(record => {
-      res.render('edit', record)
+      record.date = record.date.toJSON().toString().slice(0, 10)
+      return res.render('edit', record)
     })
     .catch(error => console.log(error))
 })

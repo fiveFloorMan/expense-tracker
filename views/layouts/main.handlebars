@@ -12,9 +12,9 @@
     <div class="container-fluid">
       <a class="navbar-brand">{{#if isAuthenticated}}{{user.name}}'s{{/if}}家庭記帳本</a>
       {{#if isAuthenticated}}
-        <a href="users/logout" class="btn btn-outline-success d-flex" type="submit">logout</a>
+        <a href="/users/logout" class="btn btn-outline-success d-flex" type="submit">logout</a>
       {{else}}
-        <a href="users/login" class="btn btn-outline-success d-flex" type="submit">login</a>
+        <a href="/users/login" class="btn btn-outline-success d-flex" type="submit">login</a>
       {{/if}}
     </div>
   </nav>
