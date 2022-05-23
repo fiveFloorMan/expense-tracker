@@ -12,9 +12,6 @@ router.get('/', (req, res) => {
     .populate('categoryId', Category)
     .lean()
     .then(records => { 
-      if(req.body.categorySelectName){
-        console.log('req.body.categorySelectName:', req.body.categorySelectName)
-      }
       let totalAmount = 0
       let categoryArray = []
       Promise.all(Array.from(records, record => {
@@ -55,7 +52,6 @@ router.post('/', (req, res) => {
         categoryArray.push(record.categoryId.name)
         // 以下是符合所選類別的record計算
         if (record.categoryId.name === categorySelectName) {
-          console.log('record.categoryId.name:', record.categoryId.name)
           // 計算總花費
           totalAmount += record.amount 
           // 選出簡短的日期, 表示方式: yyyy-mm-dd
@@ -69,7 +65,6 @@ router.post('/', (req, res) => {
           return selectRecords.push(record)
         } 
         if (categorySelectName === "全部") {
-          console.log('record.categoryId.name:', record.categoryId.name)
           // 選擇全部的record計算
           // 計算總花費
           totalAmount += record.amount 
@@ -84,7 +79,6 @@ router.post('/', (req, res) => {
           return selectRecords.push(record)
         }
       }))
-      console.log('selectRecords:', selectRecords)
       const categoryList = categoryArray.filter((element, index, self) => {
         return self.indexOf(element) === index
       })
