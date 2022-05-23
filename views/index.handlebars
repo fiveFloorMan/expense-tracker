@@ -1,20 +1,16 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
-    {{!-- DropDown --}}
+    {{!-- Select Option --}}
     <div class="col-8">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          選擇類別
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="https://google.com">家居物業</a></li>
-          <li><a class="dropdown-item" href="#">交通出行</a></li>
-          <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-          <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-          <li><a class="dropdown-item" href="#">其他</a></li>
-          <li><a class="dropdown-item" href="/">全部</a></li>
-        </ul>
-      </div>
+      <form action="/" method="POST">
+        <select name="categorySelectName" onchange="this.form.submit()" class="form-select" aria-label="Default select example">
+          <option selected>請選擇你想要的類別</option>
+            <option value="全部">全部</option>
+            {{#each categoryList}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>      
+      </form>
     </div>
     {{!-- Total Amount --}}
     <div class="col-8 mt-4">
@@ -25,38 +21,73 @@
         {{!-- Records --}}
         {{#each records}}
           <li class="list-group-item">
-            <div class="row">
-              {{!-- icon --}}
-              <div class="d-flex col-1 align-items-center">
-                <i class="{{this.categoryId.icon}}" style="width: 4px;"></i>
+              <div class="row">
+                {{!-- icon --}}
+                <div class="d-flex col-1 align-items-center">
+                  <i class="{{this.categoryId.icon}}" style="width: 4px;"></i>
+                </div>
+                {{!-- categoryName --}}
+                <div class="d-flex col-2 align-items-center">
+                  <span>{{this.categoryId.name}}</span>
+                </div>
+                {{!-- recordName --}}
+                <div class="d-flex col-2 align-items-center">
+                  <span>{{this.name}}</span>
+                </div>
+                {{!-- createDay --}}
+                <div class="d-flex col-3 align-items-center">
+                  <span>{{this.date}}</span>
+                </div>
+                {{!-- recordAmount --}}
+                <div class="d-flex col-1 align-items-center">
+                  <span>{{this.amount}}</span>
+                </div>
+                {{!-- Edit --}}
+                <form action="records/{{this._id}}/edit" method="GET" class="d-flex col-1 align-items-center">
+                  <button type="submit" class="btn btn-success">Edit</button>
+                </form>
+                {{!-- Delete --}}
+                <form action="records/{{this._id}}/delete?_method=DELETE" method="POST" class="d-flex col-2 align-items-center">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
               </div>
-              {{!-- categoryName --}}
-              <div class="d-flex col-2 align-items-center">
-                <span>{{this.categoryId.name}}</span>
-              </div>
-              {{!-- recordName --}}
-              <div class="d-flex col-2 align-items-center">
-                <span>{{this.name}}</span>
-              </div>
-              {{!-- createDay --}}
-              <div class="d-flex col-3 align-items-center">
-                <span>{{this.date}}</span>
-              </div>
-              {{!-- recordAmount --}}
-              <div class="d-flex col-1 align-items-center">
-                <span>{{this.amount}}</span>
-              </div>
-              {{!-- Edit --}}
-              <form action="records/{{this._id}}/edit" method="GET" class="d-flex col-1 align-items-center">
-                <button type="submit" class="btn btn-success">Edit</button>
-              </form>
-              {{!-- Delete --}}
-              <form action="records/{{this._id}}/delete?_method=DELETE" method="POST" class="d-flex col-2 align-items-center">
-                <button type="submit" class="btn btn-danger">Delete</button>
-              </form>
-            </div>
           </li>
         {{/each}}
+        {{!-- selectRecords --}}
+        {{#each selectRecords}}
+          <li class="list-group-item">
+              <div class="row">
+                {{!-- icon --}}
+                <div class="d-flex col-1 align-items-center">
+                  <i class="{{this.categoryId.icon}}" style="width: 4px;"></i>
+                </div>
+                {{!-- categoryName --}}
+                <div class="d-flex col-2 align-items-center">
+                  <span>{{this.categoryId.name}}</span>
+                </div>
+                {{!-- recordName --}}
+                <div class="d-flex col-2 align-items-center">
+                  <span>{{this.name}}</span>
+                </div>
+                {{!-- createDay --}}
+                <div class="d-flex col-3 align-items-center">
+                  <span>{{this.date}}</span>
+                </div>
+                {{!-- recordAmount --}}
+                <div class="d-flex col-1 align-items-center">
+                  <span>{{this.amount}}</span>
+                </div>
+                {{!-- Edit --}}
+                <form action="records/{{this._id}}/edit" method="GET" class="d-flex col-1 align-items-center">
+                  <button type="submit" class="btn btn-success">Edit</button>
+                </form>
+                {{!-- Delete --}}
+                <form action="records/{{this._id}}/delete?_method=DELETE" method="POST" class="d-flex col-2 align-items-center">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+          </li>
+        {{/each}}  
       </ul>
     </div>
   </div>
