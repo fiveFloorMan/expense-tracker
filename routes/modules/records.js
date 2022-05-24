@@ -5,6 +5,34 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
+// new 
+router.get('/new', (req, res) => {
+  Category.find()
+    .lean()
+    .then(category => {
+      res.render('new', { category })
+    })
+})
+
+// new 回傳date
+router.post('/new', (req, res) => {
+  const userId = res.locals.user
+  const createDate = req.body
+  Category.findOne({ name : createDate.recordCategory })
+    .lean()
+    .then(category => {
+      Record.create({
+        name: createDate.recordName,
+        amount: createDate.recordAmount,
+        date: createDate.recordDate,
+        categoryId: category,
+        userId: userId
+      })
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 // Edit 介面
 router.get('/:recordId/edit', (req, res) => {
   const { recordId } = req.params

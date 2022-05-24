@@ -1,0 +1,54 @@
+<div class="container-sm">
+  <div class="card mt-4 w-50 mx-auto">
+    <h2 class="mx-auto mt-4">請新增你的支出</h2>
+    {{> message}}
+    <form action="/records/new" method="POST" class="row justify-content-center">
+      {{!-- record name  --}}
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="recordName" class="form-label mt-1">名稱 :</label>
+        </div>
+        <div class="col-9">
+          <input id="recordName" name="recordName" class="form-control" placeholder="Text name here" type="text" value="{{record.name}}">
+        </div>
+      </div>
+      {{!-- record date --}}
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="recordDate" class="form-label mt-1">日期 : </label>
+        </div>
+        <div class="col-9">
+          <input id="recordDate" name="recordDate" class="form-control" placeholder="Text Date here" type="date" value="{{record.date}}">
+        </div>
+      </div>
+      {{!-- record category --}}
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="recordCategory" class="form-label mt-1">類別 : </label>
+        </div>
+        <div class="col-9">
+          <select id="recordCategory" name="recordCategory" onchange="{{category}}" class="form-select" aria-label="Default select example" placeholder="Change Category here">
+            <option selected>請選擇類別</option>
+              {{#each category}}
+                <option value="{{this.name}}">{{this.name}}</option>
+              {{/each}}
+          </select>
+        </div>
+      </div>
+      
+      {{!-- record amount --}}
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for="recordAmount" class="form-label mt-1">金額 : </label>
+        </div>
+        <div class="col-9">
+          <input id="recordAmount" name="recordAmount" class="form-control" placeholder="Text Amount here" type="Amount" value="{{record.amount}}">
+        </div>
+      </div>
+      {{!-- 修改 button --}}
+      <div class="col-8 mt-4 mb-4">
+        <button class="btn btn-success w-100">新增</button>
+      </div>
+    </form>
+  </div>
+</div>
