@@ -13,12 +13,33 @@ router.get('/:recordId/edit', (req, res) => {
     .lean()
     .then(record => {
       record.date = record.date.toJSON().toString().slice(0, 10)
-      return res.render('edit', record)
+      const selectCategory = record.categoryId.name
+      Category.find({ _id: { $ne: record.categoryId }})
+        .lean()
+        .then(category => {
+          res.render('edit', { record, selectCategory, category})
+        })
     })
     .catch(error => console.log(error))
 })
 // Edit 回傳data
-
+router.put('/:recordId', (req, res) => {
+  const { recordId } = req.params
+  const editRecordDate = req.body
+  return Category.findOne({ name : editRecordDate.recordCategory })
+    .lean()
+    .then(category => {
+      return Record.findOneAndUpdate({ _id: recordId }
+        ,{
+          name: editRecordDate.recordName,
+          date: editRecordDate.recordDate,
+          amount: editRecordDate.recordAmount,
+          categoryId: category._id
+        },{ new: false })
+        .then(() => res.redirect('/'))
+        .catch(error => console.log(error))
+    })
+})
 // Delete
 router.delete('/:recordId/delete', (req, res) => {
   const { recordId } = req.params

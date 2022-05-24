@@ -2,14 +2,14 @@
   <div class="card mt-4 w-50 mx-auto">
     <h2 class="mx-auto mt-4">請修改你的支出</h2>
     {{> message}}
-    <form action="/records/{{_id}}/edit?_method=PUT" method="POST" class="row justify-content-center">
+    <form action="/records/{{record._id}}?_method=PUT" method="POST" class="row justify-content-center">
       {{!-- record name  --}}
       <div class="row mt-3">
         <div class="col-3">
           <label for="recordName" class="form-label mt-1">名稱 :</label>
         </div>
         <div class="col-9">
-          <input id="recordName" name="recordName" class="form-control" placeholder="Text name here" type="text" value="{{name}}">
+          <input id="recordName" name="recordName" class="form-control" placeholder="Text name here" type="text" value="{{record.name}}">
         </div>
       </div>
       {{!-- record date --}}
@@ -18,22 +18,20 @@
           <label for="recordDate" class="form-label mt-1">日期 : </label>
         </div>
         <div class="col-9">
-          <input id="recordDate" name="recordDate" class="form-control" placeholder="Text Date here" type="date" value="{{date}}">
+          <input id="recordDate" name="recordDate" class="form-control" placeholder="Text Date here" type="date" value="{{record.date}}">
         </div>
       </div>
-      {{!-- record category  先不寫直到會寫option--}}
+      {{!-- record category --}}
       <div class="row mt-3">
         <div class="col-3">
           <label for="recordCategory" class="form-label mt-1">類別 : </label>
         </div>
         <div class="col-9">
-          <select id="recordCategory" name="recordCategory" onchange="{{categoryId.name}}" class="form-select" aria-label="Default select example" placeholder="Change Category here">
-            <option selected>{{categoryId.name}}</option>
-              <option value="休閒娛樂">休閒娛樂</option>
-              <option value="家居物業">家居物業</option>
-              <option value="交通出行">交通出行</option>
-              <option value="餐飲食品">餐飲食品</option>
-              <option value="其他">其他</option>
+          <select id="recordCategory" name="recordCategory" onchange="{{selectCategory}}" class="form-select" aria-label="Default select example" placeholder="Change Category here">
+            <option selected>{{selectCategory}}</option>
+              {{#each category}}
+                <option value="{{this.name}}">{{this.name}}</option>
+              {{/each}}
           </select>
         </div>
       </div>
@@ -44,7 +42,7 @@
           <label for="recordAmount" class="form-label mt-1">金額 : </label>
         </div>
         <div class="col-9">
-          <input id="recordAmount" name="recordAmount" class="form-control" placeholder="Text Amount here" type="Amount" value="{{amount}}">
+          <input id="recordAmount" name="recordAmount" class="form-control" placeholder="Text Amount here" type="Amount" value="{{record.amount}}">
         </div>
       </div>
       {{!-- 修改 button --}}
