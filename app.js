@@ -7,6 +7,9 @@ const routes = require('./routes')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const app = express()
 const PORT = process.env.MONGODB_URI || 3000
