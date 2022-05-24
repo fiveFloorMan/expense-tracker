@@ -9,7 +9,7 @@ const methodOverride = require('method-override')
 const flash = require('connect-flash')
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.MONGODB_URI || 3000
 
 const usePassport = require('./config/passport')
 require('./config/mongoose')
