@@ -45,5 +45,5 @@ app.use(methodOverride('_method'))
 app.use(routes)
 
 app.listen(PORT, () => {
-  console.log(`Running in localhost:${PORT}`)
+  console.log(`Running on localhost:${PORT}`)
 })
