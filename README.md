@@ -40,3 +40,14 @@
     Name: tester1, Password: 01
     ```
 ## 開發工具
+* @handlebars/allow-prototype-access 1.0.5 
+* connect-flash 0.1.1
+* dotenv 8.2.0
+* express 4.18.1
+* express-handlebars 4.0.6
+* express-session 1.17.1
+* handlebars 4.5.3
+* method-override 3.0.0
+* mongoose 5.13.4
+* passport 0.4.1
+* passport-local 1.0.0
