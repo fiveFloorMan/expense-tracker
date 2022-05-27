@@ -9,7 +9,7 @@
           <label for="recordName" class="form-label mt-1">名稱 :</label>
         </div>
         <div class="col-9">
-          <input id="recordName" name="recordName" class="form-control" placeholder="Text name here" type="text" value="{{record.name}}">
+          <input id="recordName" name="recordName" class="form-control" placeholder="Text name here" type="text" value="{{record.name}}" required>
         </div>
       </div>
       {{!-- record date --}}
@@ -42,7 +42,7 @@
           <label for="recordAmount" class="form-label mt-1">金額 : </label>
         </div>
         <div class="col-9">
-          <input id="recordAmount" name="recordAmount" class="form-control" placeholder="Text Amount here" type="Amount" value="{{record.amount}}">
+          <input id="recordAmount" name="recordAmount" class="form-control" placeholder="Text Amount here" type="number" min="1" value="{{record.amount}}" required>
         </div>
       </div>
       {{!-- 修改 button --}}
